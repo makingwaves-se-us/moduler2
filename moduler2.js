@@ -8,7 +8,7 @@
 let state = {}; // TODO
 let path = {};
 
-export const moduler2 = function (settings) {
+exports.moduler2 = function (settings) {
 	path = settings.path;
 
 	loadModules(settings.element || document.body);
