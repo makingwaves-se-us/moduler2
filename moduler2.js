@@ -8,7 +8,7 @@
 let state = {}; // TODO
 let path = {};
 
-export default (settings) => {
+exports.moduler2 = function (settings) {
 	path = settings.path;
 
 	loadModules(settings.element || document.body);
@@ -46,6 +46,8 @@ const addModuleToElement = (name, element) => {
 			element.modules[name] = new Module[namePascal](data);
 			element.modules[name].element = element;
 			element.modules[name].init();
+
+			console.dir(element)
 		}
 	}).catch(console.error);
 }
