@@ -6,15 +6,15 @@ export function Module2 (data) {
 		...data,
 	}
 
-	module.init = function () {
+	module.init = () => {
 		module.element.addEventListener('click', module.someOtherFunction, false);
 	}
 
-	module.destroy = function () {
+	module.destroy = () => {
 		module.element.removeEventListener('click', module.someOtherFunction, false);
 	}
 	
-	module.someOtherFunction = function (event) {
+	module.someOtherFunction = (event) => {
 		event.target.style.background = module.settings.color;
 	}
 }

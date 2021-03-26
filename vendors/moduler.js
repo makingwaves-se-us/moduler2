@@ -8,14 +8,14 @@
 let state = {}; // TODO
 let path = {};
 
-export default function (settings) {
+export default (settings) => {
 	path = settings.path;
 
 	loadModules(settings.element || document.body);
 	detectDomChanges();
 }
 
-export function loadModules (node) {
+const loadModules = (node) => {
 	const elements = node.querySelectorAll('[data-module]');
 
 	// Iterate all nodes with a data-module attribute
@@ -29,7 +29,7 @@ export function loadModules (node) {
 	}
 }
 
-export function addModuleToElement (name, element) {
+const addModuleToElement = (name, element) => {
 	// Abort if module is already loaded on the element
 	if (element.modules && element.modules[name]) {
 		return;
@@ -44,13 +44,13 @@ export function addModuleToElement (name, element) {
 			const data = parseData(element.getAttribute('data-' + name));
 			const namePascal = name.replace(/^\w/, c => c.toUpperCase());
 			element.modules[name] = new Module[namePascal](data);
-			element.modules[name].el = element;
+			element.modules[name].element = element;
 			element.modules[name].init();
 		}
 	}).catch(console.error);
 }
 
-export function removeModuleFromElement (name, element) {
+const removeModuleFromElement = (name, element) => {
 	// Make sure module is loaded on element
 	if (element.modules[name]) {
 		// Run destroy method to remove stuff like attached events
@@ -68,7 +68,7 @@ export function removeModuleFromElement (name, element) {
 	}
 }
 
-export function detectDomChanges () {
+const detectDomChanges = () => {
 	// Callback function to execute when mutations are observed
 	const callback = function(mutationsList) {
 		for (let mutation of mutationsList) {
@@ -101,7 +101,7 @@ export function detectDomChanges () {
 	observer.observe(document.body, { childList: true });
 }
 
-function parseData (data) {
+const parseData = (data) => {
 	let parsedData;
 
 	if (!data) {
@@ -117,11 +117,11 @@ function parseData (data) {
 	return parsedData;
 };
 
-export function setState (element, name, key, value) {
+const setState = (element, name, key, value) => {
 
 }
 
-export function getState (element, name, key) {
+const getState = (element, name, key) => {
 	let value;
 
 	return value;
