@@ -8,7 +8,7 @@ moduler2.js
 
 ## Initiate the framework from any js file
 ```
-import moduler2 from 'moduler2';
+import { moduler2 } from 'moduler2';
 
 moduler2({'path': './modules/'});
 ```
