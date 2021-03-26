@@ -1,19 +1,73 @@
 /*
-This new version of moduler utilizes modern javascript techniques like:
-* Dynimic module imports for efficient async loading of es6-modules
-* MutationObserver to detect DOM-changes
-* Javascript classes
-* Proxy object for handling states
+	This new version of moduler utilizes modern javascript techniques like:
+	* Dynimic module imports for efficient async loading of es6-modules
+	* MutationObserver to detect DOM-changes
+	* Javascript classes (refactor to use functions instead)
+	* Proxy object for handling states (yet to be implemented)
 */
 
-let state = {};
-let registeredModules = {};
+let state = {}; // TODO
+let path = {};
 
-export default function (modules) {
-	registeredModules = modules;
+export default function (settings) {
+	path = settings.path;
 
-	loadModules(document.body);
+	loadModules(settings.element || document.body);
 	detectDomChanges();
+}
+
+export function loadModules (node) {
+	const elements = node.querySelectorAll('[data-module]');
+
+	// Iterate all nodes with a data-module attribute
+	for (let element of elements) {
+		let names = element.getAttribute('data-module').split(' ');
+
+		// Iterate all module names in current data-module attribute
+		for (let name of names) {
+			addModuleToElement(name, element);
+		}
+	}
+}
+
+export function addModuleToElement (name, element) {
+	// Abort if module is already loaded on the element
+	if (element.modules && element.modules[name]) {
+		return;
+	}
+
+	// Dynamicly import module
+	import(path + name + '.js').then(Module => {
+		if (Module) {
+			// Add empty object to element property with module name as the key
+			element.modules ? element.modules[name] = {} : element.modules = { [name]: {} };
+
+			const data = parseData(element.getAttribute('data-' + name));
+			element.modules[name] = new Module[name.replace(/^\w/, c => c.toUpperCase())](data);
+			element.modules[name].el = element;
+			console.log(Module)
+			console.log(element.modules[name])
+			element.modules[name].init();
+		}
+	}).catch(console.error);
+}
+
+export function removeModuleFromElement (name, element) {
+	// Make sure module is loaded on element
+	if (element.modules[name]) {
+		// Run destroy method to remove stuff like attached events
+		if (element.modules[name].destroy) {
+			element.modules[name].destroy();
+		}
+
+		// Remove module name from element module-attribute
+		if (element.getAttribute('module')) {
+			element.setAttribute('module', element.getAttribute('module').replace(name, ''));
+		}
+
+		// Remove module-named object from element object
+		delete element.modules[name];
+	}
 }
 
 export function detectDomChanges () {
@@ -47,62 +101,6 @@ export function detectDomChanges () {
 
 	// Start observing the target node for configured mutations
 	observer.observe(document.body, { childList: true });
-}
-
-export function loadModules (node) {
-	const elements = node.querySelectorAll('[data-module]');
-
-	// Iterate all nodes with a data-module attribute
-	for (let element of elements) {
-		let names = element.getAttribute('data-module').split(' ');
-
-		// Iterate all module names in current data-module attribute
-		for (let name of names) {
-			addModuleToElement(name, element);
-		}
-	}
-}
-
-export function addModuleToElement (name, element) {
-	// Abort if module is already loaded on the element
-	if (element.modules && element.modules[name]) {
-		return;
-	}
-
-	// Make sure module exists
-	if (name in registeredModules) {
-		// Add empty object to element property with module name as the key
-		element.modules ? element.modules[name] = {} : element.modules = { [name]: {} };
-
-		// Dynamicly import module
-		import(registeredModules[name]).then((Module) => {
-			if (Module) {
-				// Create module with data provided by element and store everything in element object for later access
-				let data = parseData(element.getAttribute('data-' + name));
-				element.modules[name] = new Module[name.replace(/^\w/, c => c.toUpperCase())](data);
-				element.modules[name].el = element;
-				element.modules[name].init();
-			}
-		}).catch(error => console.log(error));
-	}
-}
-
-export function removeModuleFromElement (name, element) {
-	// Make sure module is loaded on element
-	if (element.modules[name]) {
-		// Run destroy method to remove stuff like attached events
-		if (element.modules[name].destroy) {
-			element.modules[name].destroy();
-		}
-
-		// Remove module name from element module-attribute
-		if (element.getAttribute('module')) {
-			element.setAttribute('module', element.getAttribute('module').replace(name, ''));
-		}
-
-		// Remove module-named object from element object
-		delete element.modules[name];
-	}
 }
 
 export function setState (element, name, key, value) {

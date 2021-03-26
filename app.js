@@ -1,7 +1,5 @@
-import moduler from './vendors/moduler';
+import moduler from './vendors/moduler.js';
 
-// Init moduler and pass an object with paths to all available modules in project
 moduler({
-	'module1': '../modules/module1.js',
-	'module2': '../modules/module2.js'
+	'path': '../modules/',
 });

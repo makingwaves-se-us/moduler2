@@ -1,17 +1,20 @@
-export class Module2 {
-	constructor(config) {
-		this.color = config.color || 'red';
+export function Module2 (data) {
+	let self = this;
+
+	self.settings = {
+		color: 'red',
+		...data,
 	}
 
-	init () {
-		this.el.addEventListener('click', this.someOtherFunction.bind(this), false);
+	self.init = function () {
+		self.el.addEventListener('click', self.someOtherFunction.bind(self), false);
 	}
 
-	destroy () {
-		this.el.removeEventListener('click', this.someOtherFunction, false);
+	self.destroy = function () {
+		self.el.removeEventListener('click', self.someOtherFunction, false);
 	}
-
-	someOtherFunction () {
-		event.target.style.background = this.color;
+	
+	self.someOtherFunction = function (event) {
+		event.target.style.background = self.settings.color;
 	}
 }
