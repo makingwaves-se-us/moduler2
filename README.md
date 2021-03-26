@@ -6,9 +6,9 @@ moduler2.js
 # Installation
 `npm i moduler2 --save`
 
-## Initiate
+## Initiate the framework from any js file
 ```
-import moduler2 from '../moduler2.js';
+import moduler2 from 'moduler2';
 
 moduler2({
     'path': './modules/',

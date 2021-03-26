@@ -2,7 +2,7 @@
   "name": "moduler2",
   "version": "1.0.0",
   "description": "A javascript framework for async loading and binding of es6 modules to DOM elements.",
-  "main": "moduler.js",
+  "main": "moduler2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
