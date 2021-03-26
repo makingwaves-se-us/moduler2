@@ -19,7 +19,7 @@ moduler2({
 * *path* - _string (Path to modules folder)
 * *element* - _HTMLElement (Defaults to document.element if left out)
 
-## Create a module
+## Module example
 ```
 export function MyModule (data) {
 	let module = this;
@@ -43,7 +43,8 @@ export function MyModule (data) {
 }
 ```
 
-## Add data attributes to your markup. This is what makes the module run on the page.
+## Add data attributes to your markup.
+This is what makes the module run on the page.
 `<div data-module="mymodule" data-mymodule="color: 'blue'"></div>`
 
 ## Develop the framwork
