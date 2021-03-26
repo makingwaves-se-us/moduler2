@@ -1,10 +1,8 @@
 moduler2.js
 ==========
 
-> A javascript framework for binding modules to DOM elements.
+> A javascript framework for async loading and binding of es6 modules to DOM elements.
 
 ## Getting Started
-Moduler2 need a webserver to work.
-
 Start a simple webserver with the following command from the root:
 `npx http-server -o`
