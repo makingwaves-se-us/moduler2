@@ -2,7 +2,6 @@
 	This new version of moduler utilizes modern javascript techniques like:
 	* Dynimic module imports for efficient async loading of es6-modules
 	* MutationObserver to detect DOM-changes
-	* Javascript classes (refactor to use functions instead)
 	* Proxy object for handling states (yet to be implemented)
 */
 
@@ -102,16 +101,6 @@ export function detectDomChanges () {
 	observer.observe(document.body, { childList: true });
 }
 
-export function setState (element, name, key, value) {
-
-}
-
-export function getState (element, name, key) {
-	let value;
-
-	return value;
-}
-
 function parseData (data) {
 	let parsedData;
 
@@ -127,3 +116,13 @@ function parseData (data) {
 
 	return parsedData;
 };
+
+export function setState (element, name, key, value) {
+
+}
+
+export function getState (element, name, key) {
+	let value;
+
+	return value;
+}
