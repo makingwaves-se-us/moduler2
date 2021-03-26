@@ -6,7 +6,7 @@ moduler2.js
 # Installation
 `npm i moduler2 --save`
 
-## Initiate moduler2 in any js file but you brobably want to do it in your main js file.
+## Initiate
 ```
 import moduler2 from '../moduler2.js';
 
