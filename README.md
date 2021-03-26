@@ -10,9 +10,7 @@ moduler2.js
 ```
 import moduler2 from 'moduler2';
 
-moduler2({
-    'path': './modules/',
-});
+moduler2({'path': './modules/'});
 ```
 
 ## Options
