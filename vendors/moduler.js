@@ -43,10 +43,9 @@ export function addModuleToElement (name, element) {
 			element.modules ? element.modules[name] = {} : element.modules = { [name]: {} };
 
 			const data = parseData(element.getAttribute('data-' + name));
-			element.modules[name] = new Module[name.replace(/^\w/, c => c.toUpperCase())](data);
+			const namePascal = name.replace(/^\w/, c => c.toUpperCase());
+			element.modules[name] = new Module[namePascal](data);
 			element.modules[name].el = element;
-			console.log(Module)
-			console.log(element.modules[name])
 			element.modules[name].init();
 		}
 	}).catch(console.error);
