@@ -24,7 +24,7 @@ If the import fails, try specifying the package path in the node_modules folder 
 ## Module example
 
 ```
-export function MyModule (element, data) {
+export function MyModule (data) {
 	let module = this;
 
 	module.props = {
