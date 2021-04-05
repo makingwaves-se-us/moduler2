@@ -1,7 +1,7 @@
 {
     "name": "moduler2",
     "version": "1.0.2",
-    "description": "A javascript framework for async loading and binding of es6 modules to DOM elements.",
+    "description": "A javascript framework for async loading and binding of es6 modules to existing DOM elements.",
     "main": "moduler2",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"

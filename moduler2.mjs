@@ -1,9 +1,3 @@
-/*
-    This new version of moduler utilizes modern javascript techniques like:
-    * Dynimic module imports for efficient async loading of es6-modules
-    * MutationObserver to detect DOM-changes
-*/
-
 let path = {};
 
 export const moduler2 = function (settings) {

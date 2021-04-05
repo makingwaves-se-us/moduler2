@@ -14,12 +14,12 @@ import { moduler2 } from 'moduler2';
 moduler2({'path': './modules/'});
 ```
 
-If the import fails, try something like `import { moduler2 } from '../node_modules/moduler2/moduler2.mjs';`
+If the import fails, try specifying the package path in the node_modules folder directly, something like `import { moduler2 } from '../node_modules/moduler2/moduler2.mjs';`
 
 ## Options
 
--   _path_ - \_string (Path to modules folder)
--   _element_ - \_HTMLElement (Defaults to document.element if left out)
+-   _path_ - string (Path to modules folder)
+-   _element_ - HTMLElement (Defaults to document.element if left out)
 
 ## Module example
 
