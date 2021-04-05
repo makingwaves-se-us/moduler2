@@ -18,8 +18,8 @@ If the import fails, try specifying the package path in the node_modules folder 
 
 ## Options
 
--   _path_ - string (Path to modules folder)
--   _element_ - HTMLElement (Defaults to document.element if left out)
+- _path_ - string (Path to modules folder)
+- _element_ - HTMLElement (Defaults to document.element if left out)
 
 ## Module example
 
@@ -29,7 +29,7 @@ export function MyModule (element, data) {
 
 	module.props = {
 		color: 'red',
-    ...data
+		...data
 	}
 
 	module.init = () => {
