@@ -18,8 +18,8 @@ If the import fails, try specifying the package path in the node_modules folder 
 
 ## Options
 
-- _path_ - string (Path to modules folder)
-- _element_ - HTMLElement (Defaults to document.element if left out)
+-   _path_ - string (Path to modules folder)
+-   _element_ - HTMLElement (Defaults to document.element if left out)
 
 ## Module example
 
@@ -48,8 +48,8 @@ export function MyModule (data) {
 
 ## Add data attributes to your markup.
 
-This will initiate a module named "mymodule" and bind it to the element. A prop (color: 'blue') is then added which becomes unique to this instance of the module. Several props can be added, separated by a comma (JSON syntax). The prop will overwrite the default one defined in the module, which makes each instance of the module highly customizable. A module can be attached to several elements on the page.
 `<div data-module="mymodule" data-mymodule="color: 'blue'"></div>`
+This will initiate a module named "mymodule" and bind it to the element. A prop (color: 'blue') is then added which becomes unique to this instance of the module. Several props can be added, separated by a comma (JSON syntax). The prop will overwrite the default one defined in the module, which makes each instance of the module highly customizable. A module can be attached to several elements on the page.
 
 ## Develop the framwork
 
