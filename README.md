@@ -49,6 +49,7 @@ export function MyModule (data) {
 ## Add data attributes to your markup.
 
 `<div data-module="mymodule" data-mymodule="color: 'blue'"></div>`
+
 This will initiate a module named "mymodule" and bind it to the element. A prop (color: 'blue') is then added which becomes unique to this instance of the module. Several props can be added, separated by a comma (JSON syntax). The prop will overwrite the default one defined in the module, which makes each instance of the module highly customizable. A module can be attached to several elements on the page.
 
 ## Develop the framwork
