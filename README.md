@@ -24,12 +24,12 @@ If the import fails, try specifying the package path in the node_modules folder 
 ## Module example
 
 ```
-export function MyModule (element, data) {
+export function MyModule (data) {
 	let module = this;
 
 	module.props = {
 		color: 'red',
-    ...data
+		...data
 	}
 
 	module.init = () => {
@@ -48,10 +48,12 @@ export function MyModule (element, data) {
 
 ## Add data attributes to your markup.
 
-This is what makes the module run on the page.
+This will initiate a module named "mymodule" and bind it to the element. A prop (color: 'blue') is then added which becomes unique to this instance of the module. Several props can be added, separated by a comma (JSON syntax). The prop will overwrite the default one defined in the module, which makes each instance of the module highly customizable. A module can be attached to several elements on the page.
 `<div data-module="mymodule" data-mymodule="color: 'blue'"></div>`
 
 ## Develop the framwork
+
+Things that can come in handy when further developing the framework:
 
 Start a simple webserver with the following command from the root:
 `npx http-server -o`
